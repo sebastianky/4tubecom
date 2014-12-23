@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://www.4tube.com/ad_detail.html?ad=playerAd -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script>
+        function getURLParameter(name) {
+            return decodeURI(
+                (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+            );
+        }
+    </script>
+    <title></title>
+    <meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
+    <style>body{margin:0;}</style>
+</head>
+<body style="margin:0;">
+    <script>
+        ad_type = getURLParameter('ad');
+        tags    = getURLParameter('tags');
+        if (typeof parent.current_ads != 'undefined' && typeof parent.current_ads[ad_type] != 'undefined') {
+            if (parent.current_ads[ad_type] != '') {
+                var ad_content = parent.current_ads[ad_type].replace('%%tags%%', tags);
+                document.write(ad_content);
+                parent.logAdRequest(ad_type);
+                if (parent.getNeedsRefresh(ad_type) == 1) {
+                    var refreshCount = parent.getRefreshCount(ad_type);
+                    var refreshInterval = parent.getRefreshInterval(ad_type);
+                    setInterval("refreshAd()", refreshInterval * 1000);
+                }
+            }
+        }
+
+        function refreshAd()
+        {
+            if (refreshCount > 0) {
+                refreshCount--;
+                window.parent._gaq.push(['_trackEvent', 'Banner', 'reload iframe', ad_type]);
+                var ad_content = parent.current_ads[ad_type].replace('%%tags%%', getURLParameter('tags'));
+                document.body.innerHTML = "";
+                document.write(ad_content);
+                document.body.style.margin = "0";
+            }
+        }
+    </script><iframe id="a920d1f8" name="a920d1f8" src="afr.html" frameborder="0" scrolling="no" width="300" height="250">&lt;a href='http://ads.pornerbros.com/delivery/ck.php?n=a61022ca&amp;amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'&gt;&lt;img src='http://ads.pornerbros.com/delivery/avw.php?zoneid=92&amp;amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;amp;n=a61022ca' border='0' alt='' /&gt;&lt;/a&gt;</iframe>
+
+
+</body></html>

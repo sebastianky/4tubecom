@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)http://www.4tube.com/ad_detail.html?ad=footer&tags= -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script>
+        function getURLParameter(name) {
+            return decodeURI(
+                (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+            );
+        }
+    </script>
+    <title></title>
+    <meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
+    <style>body{margin:0;}</style>
+</head>
+<body style="margin:0;">
+    <script>
+        ad_type = getURLParameter('ad');
+        tags    = getURLParameter('tags');
+        if (typeof parent.current_ads != 'undefined' && typeof parent.current_ads[ad_type] != 'undefined') {
+            if (parent.current_ads[ad_type] != '') {
+                var ad_content = parent.current_ads[ad_type].replace('%%tags%%', tags);
+                document.write(ad_content);
+                parent.logAdRequest(ad_type);
+                if (parent.getNeedsRefresh(ad_type) == 1) {
+                    var refreshCount = parent.getRefreshCount(ad_type);
+                    var refreshInterval = parent.getRefreshInterval(ad_type);
+                    setInterval("refreshAd()", refreshInterval * 1000);
+                }
+            }
+        }
+
+        function refreshAd()
+        {
+            if (refreshCount > 0) {
+                refreshCount--;
+                window.parent._gaq.push(['_trackEvent', 'Banner', 'reload iframe', ad_type]);
+                var ad_content = parent.current_ads[ad_type].replace('%%tags%%', getURLParameter('tags'));
+                document.body.innerHTML = "";
+                document.write(ad_content);
+                document.body.style.margin = "0";
+            }
+        }
+    </script><iframe width="900" scrolling="no" height="250" frameborder="0" src="ads(1).html" allowtransparency="true" marginheight="0" marginwidth="0" name="spot_id_118894"> </iframe>
+
+
+</body></html>
