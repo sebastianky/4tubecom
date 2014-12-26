@@ -1,0 +1,3 @@
+if(top===self) var p=document.URL; else var p=document.referrer;var dt=new Date().getTime();
+var exoDocumentProtocol = (document.location.protocol != "https:" && document.location.protocol != "http:") ? "https:" : document.location.protocol;
+document.write('<iframe frameborder="0" scrolling="no" width="' + ad_width + '" height="' + ad_height + '" src="' + exoDocumentProtocol + '//syndication.exoclick.com/ads-iframe-display.php?idzone=' + ad_idzone + '&type=' + ad_width + 'x' + ad_height + '&p=' + escape(p) + '&dt=' + dt + '"></iframe>');

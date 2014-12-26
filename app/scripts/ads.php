@@ -1,0 +1,3 @@
+if(top===self) var p = document.URL; else var p = document.referrer;var dt = new Date().getTime();
+document.write('<div style="width: 300px; height: 250px; text-align: left;"><iframe style="border: 0px solid #000000;" frameborder="0" scrolling="no" width="300" height="250" src="http://syndication.exoclick.com/ads-iframe-display.php?type=300x250&login=gals4f&cat=2&search=&ad_title_color=0000cc&bgcolor=FFFFFF&border=0&border_color=000000&font=&block_keywords=&ad_text_color=000000&ad_durl_color=008000&adult=0&sub=&text_only=0&show_thumb=&idzone=632645&idsite=182847&p=' + escape(p) + '&dt=' + dt + '"></iframe>');
+document.write('</div>');
