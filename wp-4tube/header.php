@@ -80,13 +80,15 @@
 
                             <div class="col-xs-3 col-lg-4 header-logo">
                                 <div class="logo">
-                                    <a href="./Free%20Porn%20Videos%204tube_files/Free%20Porn%20Videos%204tube.html" ><img alt="Free Porn Videos | 4tube" src="<?php echo get_template_directory_uri(); ?>/img/4tube-logo.png"></a>
+                                    <a href="/" ><img alt="Free Porn Videos | 4tube" src="<?php echo get_template_directory_uri(); ?>/img/4tube-logo.png"></a>
                                 </div>
                             </div>
 
                             <div class="col-xs-5 col-lg-4 pull-right">
                                 <div class="text-right right-links not_logged_in_menu">
-                                    <button class="btn btn-simple btn-signup btn-open-login" id="open-register">Sign Up</button><button class="link1 btn-login btn-open-login" id="open-login" >Log in</button><a class="link1" href="#" target="_blank">Feedback &amp; Support</a>
+                                    <button class="btn btn-simple btn-signup btn-open-login" id="open-register">Sign Up</button>
+                                    <button class="link1 btn-login btn-open-login" id="open-login" >Log in</button>
+                                    <a class="link1" href="#" target="_blank">Feedback &amp; Support</a>
                                 </div>
                             </div>
 
@@ -96,7 +98,7 @@
                                     <a class="<?php echo get_template_directory_uri(); ?>/img-avatar rounded"><img src="<?php echo get_template_directory_uri(); ?>/img/user_icon.png"></a>
                                     <ul class="dash-profile-nav sh">
                                         <li class="sep">
-                                            <a href="#" >Logout</a>
+                                            <a href="#">Logout</a>
                                         </li>
                                     </ul>
                                 </div>
