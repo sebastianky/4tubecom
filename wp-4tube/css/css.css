@@ -1,0 +1,71 @@
+/* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Source Sans Pro"), local("SourceSansPro-Regular"), url(http://fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlNOAHFN6BivSraYkjhveRHY.woff2) format("woff2");
+  unicode-range: U102 -103, U1EA0-1EF1, U20AB; }
+
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Source Sans Pro"), local("SourceSansPro-Regular"), url(http://fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlC2Q8seG17bfDXYR_jUsrzg.woff2) format("woff2");
+  unicode-range: U100 -24F, U1E00-1EFF, U20A0-20AB, U20AD-20CF, U2C60-2C7F, UA720-A7FF; }
+
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Source Sans Pro"), local("SourceSansPro-Regular"), url(http://fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlDKRFmJUU_JfdI4amS9F_UY.woff2) format("woff2");
+  unicode-range: U0 0FF, U131, U152 -153, U2C6, U2DA, U2DC, U2000 -206F, U2074, U20AC, U2212, U2215, UE0FF, UEFFD, UF000; }
+
+/* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: local("Source Sans Pro Semibold"), local("SourceSansPro-Semibold"), url(http://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGClYwVOhDRq2vbpGRTZ7bbs.woff2) format("woff2");
+  unicode-range: U102 -103, U1EA0-1EF1, U20AB; }
+
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: local("Source Sans Pro Semibold"), local("SourceSansPro-Semibold"), url(http://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGFKFh1TDTPrUZWzVp6FtpG8.woff2) format("woff2");
+  unicode-range: U100 -24F, U1E00-1EFF, U20A0-20AB, U20AD-20CF, U2C60-2C7F, UA720-A7FF; }
+
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: local("Source Sans Pro Semibold"), local("SourceSansPro-Semibold"), url(http://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGG_w2dyNTaOK_2O4fIAsE0k.woff2) format("woff2");
+  unicode-range: U0 0FF, U131, U152 -153, U2C6, U2DA, U2DC, U2000 -206F, U2074, U20AC, U2212, U2215, UE0FF, UEFFD, UF000; }
+
+/* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: local("Source Sans Pro Bold"), local("SourceSansPro-Bold"), url(http://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGDovqjS_dXPZszO_XltPdNg.woff2) format("woff2");
+  unicode-range: U102 -103, U1EA0-1EF1, U20AB; }
+
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: local("Source Sans Pro Bold"), local("SourceSansPro-Bold"), url(http://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGFxe-GPfKKFmiXaJ_Q0GFr8.woff2) format("woff2");
+  unicode-range: U100 -24F, U1E00-1EFF, U20A0-20AB, U20AD-20CF, U2C60-2C7F, UA720-A7FF; }
+
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: local("Source Sans Pro Bold"), local("SourceSansPro-Bold"), url(http://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGKBBe7f1mpvECReg0afxak4.woff2) format("woff2");
+  unicode-range: U0 0FF, U131, U152 -153, U2C6, U2DA, U2DC, U2000 -206F, U2074, U20AC, U2212, U2215, UE0FF, UEFFD, UF000; }
