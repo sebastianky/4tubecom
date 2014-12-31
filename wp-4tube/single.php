@@ -1,46 +1,70 @@
-<?php get_header(); ?>
-	
-	<!-- section -->
-	<section role="main">
-	<?php if (have_posts()): while (have_posts()) : the_post(); ?>
-		<!-- article -->
-		<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?>>
+<div class="modal fade player_modal in" id="player_modal" style="display: block;">
+<div class="modal-dialog container">
+<div class="modal-content">
+
+
+
+	<div class="modal-header" id="quickview-header">
+		<a href="#" class="close modalCloseImg simplemodal-close">×</a>
 		
-			<!-- post thumbnail // chek if thumbail exits -->
-			<?php if ( has_post_thumbnail()) :?>
-				<a class="single-thumb" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_post_thumbnail(); // Fullsize image for the single post ?></a>
-			<?php endif; ?>
-			<!-- /post thumbnail -->
-			
-			<h1 class="single-title inner-title"><?php the_title(); ?></h1>
-			
-			<!-- post details -->
-			<span class="date"><?php the_time('d F Y'); ?> <?php the_time('H:i'); ?></span>
-			<span class="author"><?php _e( 'Published by', 'wpeasy' ); ?> <?php the_author_posts_link(); ?></span>
-			<span class="comments"><?php comments_popup_link( __( 'Leave your thoughts', 'wpeasy' ), __( '1 Comment', 'wpeasy' ), __( '% Comments', 'wpeasy' )); ?></span>
-			<!-- /post details -->
-			
-			<!-- Dispaly dynamic content RU: Вывод контента записей -->
-			<?php the_content(); ?>
-			
-			<?php the_tags( __( 'Tags: ', 'wpeasy' ), ', ', '<br>'); // Separated by commas with a line break at the end ?>
-			
-			<p><?php _e( 'Categorised in: ', 'wpeasy' ); the_category(', '); // Separated by commas ?></p>
-			
-			<p><?php _e( 'This post was written by ', 'wpeasy' ); the_author(); ?></p>
-			
-			<?php edit_post_link(); // Always handy to have Edit Post Links available ?>
-			
-			<?php comments_template(); ?>
-			
-		
-			<?php endwhile; else: ?>
-				<h2 class="page-title inner-title"><?php _e( 'Sorry, nothing to display.', 'wpeasy' ); ?></h2>
-			<?php endif; ?>	
-		</article>
-		<!-- /article -->
-	</section>
-	<!-- /section -->
-	
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+<button type="button" id="close-quickview" class="close modalCloseImg simplemodal-close" data-dismiss="modal" aria-hidden="true">×</button>
+
+		<h1 class="modal-title">Sexy hot Blowjob compilation</h1>
+
+		<div class="notifications" id="action_messages_modal"></div>
+	</div>
+
+	<div class="modal-body">
+		<div class="content videopage">
+			<div class="box videoplayer">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12" id="quickview-content">
+							<div class="player-col videopage">
+								<div class="player">
+									<div id="video-multiple" class="player">
+										<!-- object remove -->
+										<div id="ad_player" class="none">
+
+											<iframe id="playerAd" class="ad_container ad_playerAd" width="329" height="275" scrolling="no" src="#"></iframe>
+
+										</div>
+
+										<div id="copyVideoUrlText" class="none">
+											<input id="copyVideoUrlTextInput" type="text" wy="readonly">
+										</div>
+									</div>
+								</div>
+							<div class="actions">
+
+								<button id="rateUpquickview" class="btn btn-simple btn-large btn-like rateButtons" data-type="v" data-direction="up" data-id="304293" data-href="http://www.4tube.com/video-action/304293/rate/up" title="I like this">
+
+								<i class="icon icon-thumbsup"></i>Like</button>
+
+								<button id="rateDownquickview" class="btn btn-simple btn-large btn-dislike rateButtons" data-type="v" data-direction="down" data-id="304293" data-href="http://www.4tube.com/video-action/304293/rate/down" title="I dislike this">
+
+								<i class="icon icon-thumbsdown"></i>
+
+								</button>
+
+								<span class="votes"><span id="ratingquickview">91</span>% via <span id="totalVotes">12</span> votes</span><span class="none" id="ratingPositive">11</span>
+
+								<span class="pull-right">
+
+								</span>
+							</div>
+						</div>
+					<div class="playerside-col banner-frame">
+						<!-- iframe -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- videoplayer -->
+</div>
+</div>
+
+
+</div>
+</div>
+</div>

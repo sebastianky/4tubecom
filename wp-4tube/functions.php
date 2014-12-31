@@ -488,8 +488,6 @@ add_action('init', 'wpeHeaderScripts'); // Add Scripts to wp_head
 add_action('wp_enqueue_scripts', 'wpeStyles'); // Add Theme Stylesheet
 
 
-
-
 add_action('get_header', 'enable_threaded_comments'); // Enable Threaded Comments
 
 add_action('init', 'register_html5_menu'); // Add HTML5 Blank Menu
@@ -532,28 +530,6 @@ add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove
 // Remove Filters
 remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altogether
 
-// Shortcodes
-add_shortcode('html5_shortcode_demo', 'html5_shortcode_demo'); // You can place [html5_shortcode_demo] in Pages, Posts now.
-add_shortcode('html5_shortcode_demo_2', 'html5_shortcode_demo_2'); // Place [html5_shortcode_demo_2] in Pages, Posts now.
-
-// Shortcodes above would be nested like this -
-// [html5_shortcode_demo] [html5_shortcode_demo_2] Here's the page title! [/html5_shortcode_demo_2] [/html5_shortcode_demo]
-/*------------------------------------*\
-	ShortCode Functions
-\*------------------------------------*/
-
-// Shortcode Demo with Nested Capability
-function html5_shortcode_demo($atts, $content = null)
-{
-    return '<div class="shortcode-demo">' . do_shortcode($content) . '</div>'; // do_shortcode allows for nested Shortcodes
-}
-
-// Shortcode Demo with simple <h2> tag
-function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 shortcode, allows for nesting within above element. Fully expandable.
-{
-    return '<h2>' . $content . '</h2>';
-}
-
 
 /*
  * ========================================================================
@@ -561,18 +537,8 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
  * ========================================================================
  */
 
- // Как отключить комментарии для Медиафайлов WordPress
- // http://wordpresso.org/hacks/kak-otklyuchit-kommentarii-dlya-mediafaylov-wordpress/
- 
- function filter_media_comment_status( $open, $post_id ) {
-	$post = get_post( $post_id );
-	if( $post->post_type == 'attachment' ) {
-		return false;
-	}
-	return $open;
-}
-add_filter( 'comments_open', 'filter_media_comment_status', 10 , 2 );
 
+/*
  // Редирект записи, когда поисковый запрос выдает один результат
  // http://wordpresso.org/hacks/29-wordpress-tryukov-dlya-rabotyi-s-zapisyami-i-stranitsami/
  
@@ -585,155 +551,7 @@ function single_result() {
 		}
 	}
 }
-
-// хлебные крошки 	http://dimox.name/wordpress-breadcrumbs-without-a-plugin/
-// < ?php if (function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); ? >
-// 
-function dimox_breadcrumbs() {
-
-	/* === ОПЦИИ === */
-	$text['home'] = 'Главная'; // текст ссылки "Главная"
-	$text['category'] = 'Архив рубрики "%s"'; // текст для страницы рубрики
-	$text['search'] = 'Результаты поиска по запросу "%s"'; // текст для страницы с результатами поиска
-	$text['tag'] = 'Записи с тегом "%s"'; // текст для страницы тега
-	$text['author'] = 'Статьи автора %s'; // текст для страницы автора
-	$text['404'] = 'Ошибка 404'; // текст для страницы 404
-
-	$show_current = 1; // 1 - показывать название текущей статьи/страницы/рубрики, 0 - не показывать
-	$show_on_home = 0; // 1 - показывать "хлебные крошки" на главной странице, 0 - не показывать
-	$show_home_link = 1; // 1 - показывать ссылку "Главная", 0 - не показывать
-	$show_title = 1; // 1 - показывать подсказку (title) для ссылок, 0 - не показывать
-	$delimiter = ' &raquo; '; // разделить между "крошками"
-	$before = '<span class="current">'; // тег перед текущей "крошкой"
-	$after = '</span>'; // тег после текущей "крошки"
-	/* === КОНЕЦ ОПЦИЙ === */
-
-	global $post;
-	$home_link = home_url('/');
-	$link_before = '<span typeof="v:Breadcrumb">';
-	$link_after = '</span>';
-	$link_attr = ' rel="v:url" property="v:title"';
-	$link = $link_before . '<a' . $link_attr . ' href="%1$s">%2$s</a>' . $link_after;
-	$parent_id = $parent_id_2 = $post->post_parent;
-	$frontpage_id = get_option('page_on_front');
-
-	if (is_home() || is_front_page()) {
-
-		if ($show_on_home == 1) echo '<div class="breadcrumbs"><a href="' . $home_link . '">' . $text['home'] . '</a></div>';
-
-	} else {
-
-		echo '<div class="breadcrumbs" xmlns:v="http://rdf.data-vocabulary.org/#">';
-		if ($show_home_link == 1) {
-			echo '<a href="' . $home_link . '" rel="v:url" property="v:title">' . $text['home'] . '</a>';
-			if ($frontpage_id == 0 || $parent_id != $frontpage_id) echo $delimiter;
-		}
-
-		if ( is_category() ) {
-			$this_cat = get_category(get_query_var('cat'), false);
-			if ($this_cat->parent != 0) {
-				$cats = get_category_parents($this_cat->parent, TRUE, $delimiter);
-				if ($show_current == 0) $cats = preg_replace("#^(.+)$delimiter$#", "$1", $cats);
-				$cats = str_replace('<a', $link_before . '<a' . $link_attr, $cats);
-				$cats = str_replace('</a>', '</a>' . $link_after, $cats);
-				if ($show_title == 0) $cats = preg_replace('/ title="(.*?)"/', '', $cats);
-				echo $cats;
-			}
-			if ($show_current == 1) echo $before . sprintf($text['category'], single_cat_title('', false)) . $after;
-
-		} elseif ( is_search() ) {
-			echo $before . sprintf($text['search'], get_search_query()) . $after;
-
-		} elseif ( is_day() ) {
-			echo sprintf($link, get_year_link(get_the_time('Y')), get_the_time('Y')) . $delimiter;
-			echo sprintf($link, get_month_link(get_the_time('Y'),get_the_time('m')), get_the_time('F')) . $delimiter;
-			echo $before . get_the_time('d') . $after;
-
-		} elseif ( is_month() ) {
-			echo sprintf($link, get_year_link(get_the_time('Y')), get_the_time('Y')) . $delimiter;
-			echo $before . get_the_time('F') . $after;
-
-		} elseif ( is_year() ) {
-			echo $before . get_the_time('Y') . $after;
-
-		} elseif ( is_single() && !is_attachment() ) {
-			if ( get_post_type() != 'post' ) {
-				$post_type = get_post_type_object(get_post_type());
-				$slug = $post_type->rewrite;
-				printf($link, $home_link . '/' . $slug['slug'] . '/', $post_type->labels->singular_name);
-				if ($show_current == 1) echo $delimiter . $before . get_the_title() . $after;
-			} else {
-				$cat = get_the_category(); $cat = $cat[0];
-				$cats = get_category_parents($cat, TRUE, $delimiter);
-				if ($show_current == 0) $cats = preg_replace("#^(.+)$delimiter$#", "$1", $cats);
-				$cats = str_replace('<a', $link_before . '<a' . $link_attr, $cats);
-				$cats = str_replace('</a>', '</a>' . $link_after, $cats);
-				if ($show_title == 0) $cats = preg_replace('/ title="(.*?)"/', '', $cats);
-				echo $cats;
-				if ($show_current == 1) echo $before . get_the_title() . $after;
-			}
-
-		} elseif ( !is_single() && !is_page() && get_post_type() != 'post' && !is_404() ) {
-			$post_type = get_post_type_object(get_post_type());
-			echo $before . $post_type->labels->singular_name . $after;
-
-		} elseif ( is_attachment() ) {
-			$parent = get_post($parent_id);
-			$cat = get_the_category($parent->ID); $cat = $cat[0];
-			$cats = get_category_parents($cat, TRUE, $delimiter);
-			$cats = str_replace('<a', $link_before . '<a' . $link_attr, $cats);
-			$cats = str_replace('</a>', '</a>' . $link_after, $cats);
-			if ($show_title == 0) $cats = preg_replace('/ title="(.*?)"/', '', $cats);
-			echo $cats;
-			printf($link, get_permalink($parent), $parent->post_title);
-			if ($show_current == 1) echo $delimiter . $before . get_the_title() . $after;
-
-		} elseif ( is_page() && !$parent_id ) {
-			if ($show_current == 1) echo $before . get_the_title() . $after;
-
-		} elseif ( is_page() && $parent_id ) {
-			if ($parent_id != $frontpage_id) {
-				$breadcrumbs = array();
-				while ($parent_id) {
-					$page = get_page($parent_id);
-					if ($parent_id != $frontpage_id) {
-						$breadcrumbs[] = sprintf($link, get_permalink($page->ID), get_the_title($page->ID));
-					}
-					$parent_id = $page->post_parent;
-				}
-				$breadcrumbs = array_reverse($breadcrumbs);
-				for ($i = 0; $i < count($breadcrumbs); $i++) {
-					echo $breadcrumbs[$i];
-					if ($i != count($breadcrumbs)-1) echo $delimiter;
-				}
-			}
-			if ($show_current == 1) {
-				if ($show_home_link == 1 || ($parent_id_2 != 0 && $parent_id_2 != $frontpage_id)) echo $delimiter;
-				echo $before . get_the_title() . $after;
-			}
-
-		} elseif ( is_tag() ) {
-			echo $before . sprintf($text['tag'], single_tag_title('', false)) . $after;
-
-		} elseif ( is_author() ) {
-	 		global $author;
-			$userdata = get_userdata($author);
-			echo $before . sprintf($text['author'], $userdata->display_name) . $after;
-
-		} elseif ( is_404() ) {
-			echo $before . $text['404'] . $after;
-		}
-
-		if ( get_query_var('paged') ) {
-			if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ' (';
-			echo __('Page') . ' ' . get_query_var('paged');
-			if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ')';
-		}
-
-		echo '</div><!-- .breadcrumbs -->';
-
-	}
-} // end dimox_breadcrumbs()
+*/
 
 /*
 Plugin Name: Top Level Categories
@@ -743,7 +561,7 @@ Version: 1.0.1
 Author: Filipe Fortes
 Author URI: http://fortes.com/  
 */
-
+/*
 // In case we're running standalone, for some odd reason
 if (function_exists('add_action'))
 {
@@ -758,13 +576,15 @@ if (function_exists('add_action'))
 	global $clean_category_rewrites, $clean_rewrites;
 	$clean_category_rewrites = array();
 }
-
+*/
+/*
 function top_level_cats_activate()
 {
 	global $wp_rewrite;
 	$wp_rewrite->flush_rules();
 }
-
+*/
+/*
 function top_level_cats_deactivate()
 {
 	// Remove the filters so we don't regenerate the wrong rules when we flush
@@ -775,13 +595,15 @@ function top_level_cats_deactivate()
 	global $wp_rewrite;
 	$wp_rewrite->flush_rules();
 }
-
+*/
+/*
 function top_level_cats_generate_rewrite_rules($wp_rewrite)
 {
 	global $clean_category_rewrites;
 	$wp_rewrite->rules = $wp_rewrite->rules + $clean_category_rewrites;
 }
-
+*/
+/*
 function top_level_cats_category_rewrite_rules($category_rewrite)
 {
 	global $clean_category_rewrites;
@@ -799,11 +621,14 @@ function top_level_cats_category_rewrite_rules($category_rewrite)
 
 	return $category_rewrite;
 }
-
+*/
+/*
 function top_level_cats_category_link($cat_link, $cat_id)
 {
 	return top_level_cats_remove_cat_base($cat_link);
 }
+*/
+/*
 
 function top_level_cats_remove_cat_base($link)
 {
@@ -821,7 +646,7 @@ function top_level_cats_remove_cat_base($link)
 
 	return preg_replace('|' . $category_base . '|', '', $link, 1);
 }
-
+*/
 $type_computer_part = new Super_Custom_Post_Type( 'actress' );
 $type_computer_part->set_icon( 'smile' );
 

@@ -1,5 +1,5 @@
 <div class="col thumb_video" data-idmodal="<?php the_ID(); ?>">
-    <a class="thumb-link" href="<?php the_permalink(); ?>">
+    <a class="thumb-link" href="#" rel="<?php the_ID(); ?>" >
                                             
         <div class="thumb">
             <?php if ( has_post_thumbnail()) : wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 250,250 ), false, '' ); else: ?>

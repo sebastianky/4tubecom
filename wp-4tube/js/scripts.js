@@ -1,6 +1,6 @@
 // DOM Ready
 $(function() {
-	
+
 	// SVG fallback
 	// toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script#update
 	if (!Modernizr.svg) {
@@ -13,4 +13,11 @@ $(function() {
 		}
 	}
 
+});
+$(document).ready(function() {
+	$('a.thumb-link').click(function(){
+		id = jQuery(this).attr('rel');
+		$('<div id="ajax-popup" class="modal-'+id+'"></div>').hide().appendTo('body').load('http://demo.saitobaza.ru//?p='+id).modal();
+		return false;
+	});
 });
