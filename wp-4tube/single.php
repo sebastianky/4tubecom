@@ -1,18 +1,13 @@
-<div class="modal fade player_modal in" id="player_modal" style="display: block;">
-<div class="modal-dialog container">
-<div class="modal-content">
+<div class="modal  player_modal in" id="player_modal" style="display: block;"><div class="modal-dialog container"><div class="modal-content">
 
-
+<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
 	<div class="modal-header" id="quickview-header">
-		<a href="#" class="close modalCloseImg simplemodal-close">×</a>
-		
-<button type="button" id="close-quickview" class="close modalCloseImg simplemodal-close" data-dismiss="modal" aria-hidden="true">×</button>
+		<button type="button" id="close-quickview" class="close modalClose" data-dismiss="modal" aria-hidden="true">×</button>
 
-		<h1 class="modal-title">Sexy hot Blowjob compilation</h1>
-
+		<h1 class="modal-title"><?php the_title(); ?></h1>
 		<div class="notifications" id="action_messages_modal"></div>
-	</div>
+	</div><!-- modal-header -->
 
 	<div class="modal-body">
 		<div class="content videopage">
@@ -23,16 +18,9 @@
 							<div class="player-col videopage">
 								<div class="player">
 									<div id="video-multiple" class="player">
+										
 										<!-- object remove -->
-										<div id="ad_player" class="none">
-
-											<iframe id="playerAd" class="ad_container ad_playerAd" width="329" height="275" scrolling="no" src="#"></iframe>
-
-										</div>
-
-										<div id="copyVideoUrlText" class="none">
-											<input id="copyVideoUrlTextInput" type="text" wy="readonly">
-										</div>
+										
 									</div>
 								</div>
 							<div class="actions">
@@ -64,7 +52,16 @@
 </div>
 </div>
 
+<?php endwhile; else: ?>
 
-</div>
-</div>
-</div>
+	<div class="modal-header" id="quickview-header">
+		<button type="button" id="close-quickview" class="close modalClose" data-dismiss="modal" aria-hidden="true">×</button>
+
+		<h1 class="modal-title">ERROR 404</h1>
+		<div class="notifications" id="action_messages_modal"></div>
+	</div><!-- modal-header -->
+
+<?php endif; ?>	
+
+</div></div></div>
+
